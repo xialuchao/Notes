@@ -1,0 +1,102 @@
+一.Django
+1.安装django   使用pip安装
+2.将django的目录配置到环境变量
+3.使用命令：django-admin.py startproject api_automation  生成一个api_automation 项目   （如果不行，记得查看 django-admin 文件的打开方式）
+4.在setting.py里 设置好 mysql环境
+5.设计好model 数据库模型====①
+6.生成数据库：
+	python manage.py makemigrations
+	python manage.py migrate
+6.1.如果报错：django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.
+	__init__.py 添加：
+	import pymysql
+	pymysql.install_as_MySQLdb()
+7.
+
+
+二、vue
+1.安装vue 脚手架：cnpm install --global vue-cli
+2.创建vue项目：vue init webpack my-project
+3.css的加载报错，需要sass
+npm install --save-dev css-loader
+npm install sass-loader --save-dev
+npm install node-sass
+
+接口请求：npm install --save axios
+
+element-ui： npm i element-ui -S
+
+
+
+<script>
+
+1.创建vue实例
+new出来的vm对象是mvvm中的vm调度者
+el:表示当前我们new的这个vue实例，要控制页面上的那个区域
+data：存放的事el中要用到的数据
+			通过vue提供的指令，很方便的渲染到页面上，程序员不在手动操作dom元素
+methods：{定义当前所有实例可用的方法
+	show：function(){
+		alter('hello')
+	}
+}
+
+
+<v-clock> 解决插值表达式的闪烁
+<p v-text="msg"> </p>  类似===    <p>{{msg}}</p>
+区别：
+1.v-text 没有闪烁问题 
+2.v-text 覆盖元素中原有的内容，置灰替换自己的   <p v-text="msg">123 </p>   会替换123
+<v-html> 解析成html  <h1> 
+<v-bind> 绑定属性的指令   <v-bind：titile:"mytitle">   》》mytitle在data中有值
+			其中mytitle会被解析成js 可以写js表达式   <v-bind：titile:"mytitle + ‘123’">
+			也可以缩略成冒号
+<v-on:click="show"> 点击事件绑定   v-on 可以缩写成@
+<v-on:mouseon>
+
+时间修饰器：
+使用.stop方法，
+使用.prevent方法 阻止默认事件
+
+
+走马灯效果：
+<body>
+	<div id="app">
+	<input type="button" value="浪起来“  @click="lang">
+	
+	<h4>
+	
+	</div>
+</body>
+
+<script>
+var vm = new Vue({
+	el:'#app',
+	data:{
+		mes:'weisuofayubielang'
+		intervalId:null
+	}
+	methods:{
+		lang(){
+			if (intervalId != null) return;
+			this.interbalId = setInterval( () => {   //这里的this一定要
+			//console.log(msg)
+			var start = this.msg.substring(0,1)
+			var end = this.msg.substring(1)
+			this.msg = end + start 
+		}, 400}，
+		stop(){
+			clearInterval(this.intervalId)
+			this.intervalId = null
+		}
+	}
+})
+</script>
+   =>   内外的this 指向同一个this
+分析：
+1.给按钮添加v-on 点击事件
+2.函数处理字符串substring 进行字符串截取
+3.
+4.注意：vm实例中，如果想要获取data中的数据，或者想要调用methods中的方法，必须通过this.数据属性名  或 this.方法名来进行访问  这里的this 就表示我们new出来的 vm 实例对象
+ 
+element-ui 验证表单：
