@@ -1,9 +1,11 @@
-一.Django
+﻿一.Django
 1.安装django   使用pip安装
 2.将django的目录配置到环境变量
 3.使用命令：django-admin.py startproject api_automation  生成一个api_automation 项目   （如果不行，记得查看 django-admin 文件的打开方式）
 4.在setting.py里 设置好 mysql环境
 5.设计好model 数据库模型====①
+6.安装mysqlclient 
+pip install -i https://pypi.douban.com/simple mysqlclient
 6.生成数据库：
 	python manage.py makemigrations
 	python manage.py migrate
@@ -12,7 +14,7 @@
 	import pymysql
 	pymysql.install_as_MySQLdb()
 7.
-
+python 库 安装错误：www.lfd.uci.edu/~gohlke/pyhtonlibs
 
 二、vue
 1.安装vue 脚手架：cnpm install --global vue-cli
